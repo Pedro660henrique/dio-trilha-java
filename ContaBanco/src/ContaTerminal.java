@@ -19,13 +19,22 @@ public class ContaTerminal {
         String nomeConta = sc.nextLine();
         System.out.print("Deposite seu saldo inicial: ");
         double saldoInicialConta = sc.nextDouble();
-
-        System.out.println("Olá " 
-        + nomeConta + ", obrigado por criar uma conta em nosso banco, sua agência é " 
-        + agenciaConta + ", conta "
-        + numeroConta + " e seu saldo " 
-        + saldoInicialConta + " já está disponível para saque");
-
+        //Iniciei a nova classe banco terminal, e coloquei o valor inicial nele
+        BancoTerminal minhaConta = new BancoTerminal(saldoInicialConta);
+        System.out.println("Você deseja sacar? (S/N): ");
+        char resposta = sc.next().charAt(0);
+        //if para confirmação de resposta para saque
+        if (resposta == 'S' || resposta == 's'){
+            System.out.println("Quanto deseja sacar? ");
+            double valorSaque = sc.nextDouble();
+            minhaConta.sacar(valorSaque);
+        } else {
+            System.out.println("Olá " 
+            + nomeConta + ", obrigado por criar uma conta em nosso banco, sua agência é " 
+            + agenciaConta + ", conta "
+            + numeroConta + " e seu saldo R$" 
+            + saldoInicialConta + " já está disponível para saque");
+        }
 
         sc.close();
 
